@@ -1,5 +1,145 @@
-Portfolio Test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrew Thomas | Engineering Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/components.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
 
+  <main>
+    <section id="about" class="section">
+      <div class="about-container">
+        <div class="about-text">
+          <h1>Hey, I'm Andrew</h1>
+          <p>At age five, I wanted to be a robot when I grew up. Today, I build them.
+          <p>Few things are as rewarding as tackling challenges I once thought unattainable. That drive has led me to establish a broad technical foundation across mechatronics, ranging from mechanical and electrical design for powered drive systems and mine-clearance equipment, to industry experience in embedded software and autonomous vehicle motion planning.</p>
+          <p>But technical capability is only half the equation. To balance the engineering side, I’ve spent significant time serving in people-first leadership roles focused on organization and team management.</p>
+          <p>I’m always eager to expand my expertise and see what ambitions become reachable next. Thanks for stopping by!</p>
+        </div>
+        <div class="about-image">
+          <img src="./assets/images/profile.jpg" alt="Profile Photo">
+        </div>
+      </div>
+    </section>
 
-  Hello World
-  Engineering portfolio is live.
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <div class="experience-card">
+        <div class="experience-list">
+          <div class="experience-item">
+            <a href="https://www.rheinmetall.com/en/company/subsidiaries/provectus-robotics-solutions" target="_blank" rel="noopener noreferrer" class="company-link">
+              Rheinmetall Provectus<span class="ext-icon">&#8599;</span>
+            </a>
+            <span class="role-details"> Robotic Systems Software Developement Intern <span class="timeframe">(2026)</span></span>
+          </div>
+
+          <div class="experience-item">
+            <a href="https://qset.ca/" target="_blank" rel="noopener noreferrer" class="company-link">
+              Queen's Space Engineering Team<span class="ext-icon">&#8599;</span>
+            </a>
+            <span class="role-details"> Drive Lead (formerly General Member)  <span class="timeframe">(2024 &ndash; 2026)</span></span>
+          </div>
+
+          <div class="experience-item">
+            <a href="https://www.ciena.com/" target="_blank" rel="noopener noreferrer" class="company-link">
+              Ciena<span class="ext-icon">&#8599;</span>
+            </a>
+            <span class="role-details"> Embedded Software Engineering Student <span class="timeframe">(2025)</span></span>
+          </div>
+
+          <div class="experience-item">
+            <span class="company-name">Canadian Demining Services</span>
+            <span class="role-details">, Remote Demining Engineering Student <span class="timeframe">(2025)</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div class="education-card">
+        <div class="education-header">
+          <div class="education-title">
+            <h3>Mechatronics &amp; Robotics Engineering, B.A.Sc.</h3>
+            <p class="eduction-uni-name">Queen's University &bull; Kingston, Canada</p>
+          </div>
+          <span class="eduction-gpa-badge">GPA: 4.2 / 4.3</span>
+        </div>
+
+        <button id="toggle-courses-btn" class="btn btn-courses">Show Relevant Courses &#9660;</button>
+
+        <div id="courses-list" class="courses-container hidden">
+          <h4>Relevant Courses</h4>
+          
+          <div class="courses-columns">
+            <div class="course-group">
+              <h5>Systems &amp; Automation</h5>
+              <ul>
+                <li>Mechatronics Design I &ndash; III</li>
+                <li>Industrial Automation</li>
+                <li>Sensors and Electric Actuators</li>
+                <li>Signals and Systems</li>
+              </ul>
+            </div>
+
+            <div class="course-group">
+              <h5>Embedded &amp; Computing</h5>
+              <ul>
+                <li>Microprocessors and Embedded Sys.</li>
+                <li>Computer Architecture</li>
+                <li>Digital Systems</li>
+                <li>Computer Networks</li>
+              </ul>
+            </div>
+
+            <div class="course-group">
+              <h5>Hardware, Software &amp; Math</h5>
+              <ul>
+                <li>Electronics I &ndash; II</li>
+                <li>Statics and Solid Mechanics</li>
+                <li>Data Structures and Algorithms</li>
+                <li>Numerical Methods &amp; Optimization</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="curriculum-link-wrapper">
+            <a href="https://smithengineering.queensu.ca/mre/undergraduate/curriculum.html" target="_blank" rel="noopener noreferrer" class="curriculum-link">
+              View Official Curriculum &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="assets/images/project-thumb.jpg" alt="Swerve Image">
+          <h3>Rover Swerve</h3>
+          <p>desc.</p>
+          <a href="projects/sample-project.html" class="btn">View Project &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:your.email@example.com">andrew.thomas2614@gmail.com</a></p>
+      <p>LinkedIn: <a href="#">https://www.linkedin.com/in/andrew-thomas-454298328/</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Andrew Thomas. Hosted on GitHub Pages.</p>
+  </footer>
+
+</body>
+</html>
