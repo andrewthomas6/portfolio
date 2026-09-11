@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rover Swerve</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  
+  <script src="../js/components.js" defer></script>
+</head>
+<body>
+
+  <main class="project-detail">
+    <header class="project-header">
+      <h1>Rover Swerve</h1>
+      <p class="subtitle"> Mechanical Design / Systems Integration </p>
+    </header>
+
+    <section class="cad-container">
+      <h2>CAD Viewer</h2>
+      <div class="cad-window">
+        <model-viewer 
+          src="../assets/CAD/swerve.glb" 
+          alt="Rover Swerve CAD Model" 
+          camera-controls 
+          auto-rotate 
+          shadow-intensity="0"
+          touch-action="pan-y">
+        </model-viewer>
+      </div>
+    </section>
+
+    <section class="project-content">
+      <h2>Overview</h2>
+      <p>Traditional fixed-angle drivetrains have limited maneuverability, particularly laterally. 
+        Increased agility during navigation and traversal tasks as well as during precision manipulation tasks is a valuable asset.
+        Swerve drive is considered the ideal solution to these issues, though there is no standard design among teams.
+        The design had the requirements of being compact enough to fit within the rovers 1m x 1m starting configuration, add no more than 1.5 kg per module, and provide at least 70 Nm of rotational torque.
+        A worm drive was selected for the high gear ratio, allowing for the use of a smaller and lighter brushless DC motor, and the natrual resistance to backdriving.
+        I performed numerous iterations on the brackets to minimize material while retaining strength and minimizing deflection in key areas.
+        The 3D printed enclosure was designed to provide easy access to the drive gears for greasing and cleaning through the top panel while sealing tightly to exclude dust in harsh environments.
+      </p>
+
+      <!-- <h2>Key Features & Results</h2>
+      <ul>
+        <li>torque output</li>
+        <li>FEA results, single-wheel supported</li>
+        <li>minimized weight</li>
+      </ul> -->
+    </section>
+
+    <section class="project-gallery">
+      <h2>Images</h2>
+      <div class="image-grid">
+        <figure class="gallery-item">
+          <img src="../assets/images/swerve-fea.png" alt="swerve FEA">
+          <figcaption>Finite Element Analysis (FEA) of yield stress under maximum load and torque conditions with a FOS of 2.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="../assets/images/swerve-wireframe.png" alt="swerve wireframe">
+          <figcaption>Wireframe view of worm drive gearbox.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="../assets/images/swerve-support.png" alt="swerve support">
+          <figcaption>No-fastener strengthening ribs.</figcaption>
+        </figure>
+
+      </div>
+    </section>
+  </main>
+
+
+  <dialog id="image_modal" class="lightbox">
+    <button class="lightbox-close" id="lightbox_close" aria-label="Close image preview">&times;</button>
+    <img id="lightbox_img" src="" alt="Enlarged view">
+    <p id="lightbox_caption"></p>
+  </dialog>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('image_modal');
+      const modalImg = document.getElementById('lightbox_img');
+      const modalCaption = document.getElementById('lightbox_caption');
+      const closeBtn = document.getElementById('lightbox_close');
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          const caption = item.querySelector('figcaption');
+
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modalCaption.textContent = caption ? caption.textContent : '';
+          modal.showModal();
+        });
+      });
+
+      closeBtn.addEventListener('click', () => modal.close());
+
+      modal.addEventListener('click', (e) => {
+        const rect = modal.getBoundingClientRect();
+        const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+          rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+        if (!isInDialog || e.target === modal) {
+          modal.close();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

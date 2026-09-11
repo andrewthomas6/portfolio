@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="dropdown">
           <a href="${basePath}index.html#projects" class="dropbtn">Projects &#9662;</a>
           <div class="dropdown-content">
-            <a href="${basePath}projects/sample-project.html">Sample CAD Project</a>
+            <a href="${basePath}projects/rover-swerve.html">Rover Swerve</a>
             <!-- Add future projects here -->
           </div>
         </div>
