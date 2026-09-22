@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rover Swerve</title>
+  <link rel="icon" type="image/x-icon" href="./../assets/images/favicon32.ico">
   <link rel="stylesheet" href="../css/styles.css">
   
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
@@ -13,6 +14,14 @@
 <body>
 
   <main class="project-detail">
+    <a href="../index.html#projects" class="back-link">
+      <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/>
+        <path d="m12 19-7-7 7-7"/>
+      </svg>
+      <span>Back to Projects</span>
+    </a>
+
     <header class="project-header">
       <h1>Rover Swerve</h1>
       <p class="subtitle"> Mechanical Design / Systems Integration </p>
@@ -54,7 +63,7 @@
     <section class="project-gallery">
       <h2>Images</h2>
       <div class="image-grid">
-        <figure class="gallery-item">
+        <figure class="gallery-item span-v2">
           <img src="../assets/images/swerve-fea.png" alt="swerve FEA">
           <figcaption>Finite Element Analysis (FEA) of yield stress under maximum load and torque conditions with a FOS of 2.</figcaption>
         </figure>
@@ -68,7 +77,6 @@
           <img src="../assets/images/swerve-support.png" alt="swerve support">
           <figcaption>No-fastener strengthening ribs.</figcaption>
         </figure>
-
       </div>
     </section>
   </main>

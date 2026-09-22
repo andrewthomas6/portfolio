@@ -63,7 +63,7 @@ h2 {
   text-transform: uppercase; 
   letter-spacing: 0.08em; 
   color: var(--accent); 
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   font-weight: 700;
 }
 h3 { font-size: 1.15rem; font-weight: 600; }
@@ -98,44 +98,59 @@ a:hover {
 
 /* header */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 58px;
-  background-color: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
-  z-index: 1000;
-  box-shadow: var(--shadow-sm);
+  padding: 1.25rem 2rem;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.nav-brand a {
-  font-family: var(--font-heading);
-  color: var(--text-main);
-  font-weight: 700;
-  font-size: 0.95rem;
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   text-decoration: none;
-  letter-spacing: -0.01em;
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: opacity 0.15s ease;
 }
 
+.brand-link:hover {
+  opacity: 0.85;
+}
+
+.nav-favicon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Navigation Links */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.5rem;
 }
 
 .nav-links a {
-  font-family: var(--font-heading);
   color: var(--text-muted);
-  font-size: 0.88rem;
-  font-weight: 500;
   text-decoration: none;
-  transition: var(--transition);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.15s ease;
 }
 
 .nav-links a:hover {
@@ -398,6 +413,34 @@ a:hover {
 }
 
 /* projects */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.back-icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent);
+  transition: transform 0.15s ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.back-link:hover .back-icon {
+  transform: translateX(-3px);
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -490,22 +533,104 @@ a:hover {
   --poster-color: transparent;
 }
 
+.app-demo-section {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.demo-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 320px;
+  height: 650px;
+  margin: 0 auto;
+  background-color: #000000;
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 10px;
+  box-shadow: var(--shadow-card);
+}
+
+.phone-notch {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 16px;
+  background-color: #000000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 10;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  object-fit: cover;
+  display: block;
+  background-color: var(--bg-surface);
+}
+
+@media (max-width: 400px) {
+  .phone-mockup {
+    width: 280px;
+    height: 570px;
+  }
+}
+
+.video-demo-section {
+  margin-bottom: 2.5rem;
+}
+
+
+.video-window {
+  width: 100%;
+  height: 480px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.demo-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .video-window {
+    height: 300px;
+  }
+}
+
+/* ==========================================================================
+   PROJECT GALLERY & MEDIA GRID
+   ========================================================================== */
 .project-gallery {
   width: 100%;
 }
 
 .image-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 220px; /* Fixed row height prevents overlapping */
+  grid-auto-flow: dense;
   gap: 1.25rem;
   width: 100%;
 }
 
 .gallery-item {
-  flex: 1 1 calc(50% - 0.625rem); 
-  min-width: 260px;
-  max-width: 100%;
-  
+  margin: 0;
   background-color: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -514,6 +639,13 @@ a:hover {
   flex-direction: column;
   cursor: pointer;
   transition: border-color 0.15s ease, transform 0.15s ease;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Vertical span helper class */
+.gallery-item.span-v2 {
+  grid-row: span 2;
 }
 
 .gallery-item:hover {
@@ -521,13 +653,17 @@ a:hover {
   transform: translateY(-2px);
 }
 
-.gallery-item img {
+/* Shared media styles for both Images and Videos */
+.gallery-item img,
+.gallery-item video {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  flex: 1; /* Dynamically expands inside card flex layout */
+  min-height: 0; /* Prevents overflow pushing elements outside grid cells */
+  object-fit: contain; /* Set to 'cover' if you prefer edge-to-edge cropping */
   background-color: var(--bg-primary);
   border-radius: calc(var(--radius) - 2px);
   border: 1px solid var(--border);
+  display: block;
 }
 
 .gallery-item figcaption {
@@ -537,6 +673,7 @@ a:hover {
   margin-top: 0.6rem;
   line-height: 1.4;
   text-align: center;
+  flex-shrink: 0; /* Protects caption height */
 }
 
 .lightbox {
@@ -557,7 +694,8 @@ a:hover {
   backdrop-filter: blur(4px);
 }
 
-.lightbox img {
+.lightbox img,
+.lightbox video {
   max-width: 100%;
   max-height: 70vh;
   display: block;
@@ -592,9 +730,23 @@ a:hover {
   color: var(--accent);
 }
 
-/* ==========================================================================
-   CONTACT SECTION STYLES
-   ========================================================================== */
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .gallery-item.span-v2 {
+    grid-row: auto;
+  }
+
+  .gallery-item img,
+  .gallery-item video {
+    height: 200px;
+  }
+}
+
 .contact-links {
   display: flex;
   flex-direction: column;

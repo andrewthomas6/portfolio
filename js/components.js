@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerHTML = `
     <header class="navbar">
       <div class="nav-brand">
-        <a href="${basePath}index.html">Andrew Thomas</a>
+        <a href="${basePath}index.html" class="brand-link">
+          <img src="${basePath}assets/images/favicon32.ico" alt="Logo" class="nav-favicon">
+          <span>Andrew Thomas</span>
+        </a>
       </div>
       <nav class="nav-links">
         <a href="${basePath}index.html#about">About</a>
@@ -16,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <a href="${basePath}index.html#projects" class="dropbtn">Projects &#9662;</a>
           <div class="dropdown-content">
             <a href="${basePath}projects/rover-swerve.html">Rover Swerve</a>
-            <!-- Add future projects here -->
+            <a href="${basePath}projects/quotable.html">Quotable</a>
+            <a href="${basePath}projects/demining-flail.html">Remote Demining Flail</a>
+            <a href="${basePath}projects/self-leveling.html">Electromagnetic Self-Leveling Rover</a>
           </div>
         </div>
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotable</title>
+  <link rel="icon" type="image/x-icon" href="./../assets/images/favicon32.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <script src="../js/components.js" defer></script>
+</head>
+<body>
+
+  <main class="project-detail">
+    <a href="../index.html#projects" class="back-link">
+      <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/>
+        <path d="m12 19-7-7 7-7"/>
+      </svg>
+      <span>Back to Projects</span>
+    </a>
+
+    <header class="project-header">
+      <h1>Quotable</h1>
+      <p class="subtitle"> Fullstack Software / Project Management </p>
+    </header>
+
+    <section class="app-demo-section">
+      <h2>App Demonstration</h2>
+      <p class="demo-subtitle">Android emulation of live build.</p>
+      
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        
+        <video 
+          id="app_video"
+          class="phone-screen" 
+          autoplay 
+          loop 
+          muted 
+          playsinline>
+          <source src="../assets/videos/quotable_demo.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="project-content">
+      <h2>Overview</h2>
+      <p> Have you ever heard a profound bit of advice, or a line from a friend that had you smiling long after it was said?
+        Many people record quotes, though recording them quickly and sharing them easily is a challenge. Quotable solves these issues.
+      </p>
+      <p> Quotable began as an HTML/CSS and TypeScript site and was rebuilt as an iOS and Android app in the winter of 2026 to increase accessibility and traffic.
+        The current app uses a React Native frontend and PHP backend. The beauty of an ongoing project like this is that once myself and my co-developers had laid the foundation,
+        each new feature ticket has become a chance to dig further into the intricacies of UI/UX design. Having a clean software architecture has also been instrumental, as we've realized
+        through a few large refactors. Our API and backend have involved into a systematic query and response system to cleanly access our SQL-based database. Hosting a live platform (and debugging
+        it when it goes down) has given me hands on experience in networking and server management. While initially frustrating, failures certainly result in a better grasp of diagnostic tools and the finer details of integration.
+        From deep dives into DNS records to managing an ever growing list of tasks and team members, Quotable has proven the benefits of tackling an ambitious idea and constantly pushing it forward.
+      </p>
+
+      <!-- <h2>Key Features & Results</h2>
+      <ul>
+        <li>torque output</li>
+        <li>FEA results, single-wheel supported</li>
+        <li>minimized weight</li>
+      </ul> -->
+    </section>
+
+    <section class="project-gallery">
+      <h2>Images</h2>
+      <div class="image-grid">
+        <figure class="gallery-item span-v2">
+          <img src="../assets/images/quotable-metrics.png" alt="ios metrics">
+          <figcaption>30 day app acquisition metrics on iOS.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="../assets/images/quotable-backend.png" alt="backend table structure">
+          <figcaption>Example of backend table structure design.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="../assets/images/quotable-expo.png" alt="expo framework">
+          <figcaption>Integration with the Expo app framework.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+
+  <dialog id="image_modal" class="lightbox">
+    <button class="lightbox-close" id="lightbox_close" aria-label="Close image preview">&times;</button>
+    <img id="lightbox_img" src="" alt="Enlarged view">
+    <p id="lightbox_caption"></p>
+  </dialog>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('image_modal');
+      const modalImg = document.getElementById('lightbox_img');
+      const modalCaption = document.getElementById('lightbox_caption');
+      const closeBtn = document.getElementById('lightbox_close');
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          const caption = item.querySelector('figcaption');
+
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modalCaption.textContent = caption ? caption.textContent : '';
+          modal.showModal();
+        });
+      });
+
+      closeBtn.addEventListener('click', () => modal.close());
+
+      modal.addEventListener('click', (e) => {
+        const rect = modal.getBoundingClientRect();
+        const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+          rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+        if (!isInDialog || e.target === modal) {
+          modal.close();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
