@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quotable</title>
+  <title>Demining Flail</title>
   <link rel="icon" type="image/x-icon" href="./../assets/images/favicon32.ico">
   <link rel="stylesheet" href="../css/styles.css">
   
@@ -24,7 +24,7 @@
 
     <header class="project-header">
       <h1>Demining Flail</h1>
-      <p class="subtitle"> Effective Prototyping / Real-world Engineering </p>
+      <p class="subtitle"> 2025 | Effective Prototyping / Real-world Engineering </p>
     </header>
 
     <section class="video-demo-section">
@@ -47,20 +47,34 @@
 
     <section class="project-content">
       <h2>Overview</h2>
-      <p> Have you ever heard a profound bit of advice, or a line from a friend that had you smiling long after it was said?
-        Many people record quotes, though recording them quickly and sharing them easily is a challenge. Quotable solves these issues.
-      </p>
-      <p> Sourcing materials
-        adapting design to issues, testing
-        power diagrams, (second) battery
+      <p> Traditional demining equipment is costly, with most mechanical unexploded ordnance (UXO) removal handled by retrofitted armored vehicles or complex, purpose-built platforms. 
+        In areas where these tools aren't available, personnel end up clearing UXO manually with inadequate protective gear.
+      </p> 
+      <p> 
+        To tackle this, our team worked with Canadian Demining Services (CDS) to build a prototype for an inexpensive remote demining solution. 
+        By overhauling small-engine vehicles like ATVs and lawn tractors with drive-by-wire controls and custom overrides (like 3D printed servo mounts to shift gears!), we showed that a fleet of low-cost, disposable units could clear areas safely for a fraction of the cost. 
+        I was tasked with designing, building, and integrating a functional flail attachment. Spinning chain-mounted hammers at 900 RPM, the flail generates enough force to safely detonate small anti-personnel mines ahead of the vehicle. 
+        After modeling the design in SolidWorks, I tested torque needs using a hand-held scale and coiled cord, and combined that data with researched statistics to spec the drive motor and linear actuator. 
+        To handle the power draw, I installed a second lithium-ion battery in parallel and drafted complete vehicle power diagrams.
+         Mechanical integration meant solving practical problems on the fly—like adding a custom chain-tensioner. Setting up control also meant modifying the harness connectors for additional channels (to an RF controller) and adding options to Wi-Fi comms CLI.
+         The highlight of the project was demonstrating the working prototype to a UN delegate working on humanitarian demining.
       </p>
 
-      <!-- <h2>Key Features & Results</h2>
+      <h2>Key Deliverables & Specs</h2>
       <ul>
-        <li>torque output</li>
-        <li>FEA results, single-wheel supported</li>
-        <li>minimized weight</li>
-      </ul> -->
+        <li>900 RPM powered flail attachment</li>
+        <li>Parallel dual-battery power distribution </li>
+      </ul>
+
+      <h2>Tools Used</h2>
+      <ul>
+        <li>SolidWorks</li>
+        <li>Drive-by-Wire systems</li>
+        <li>Power distribution diagrams</li>
+        <li>Dynamic testing</li>
+        <li>Dual-channel comms (RF & Wi-Fi)</li>
+      </ul>
+
     </section>
 
     <section class="project-gallery">
@@ -86,7 +100,7 @@
             <source src="../assets/videos/flail-torque.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <figcaption>Torque test with fish scale for motor sizing.</figcaption>
+          <figcaption>Torque test with fish scale for motor and gear ratio sizing.</figcaption>
         </figure>
       </div>
     </section>

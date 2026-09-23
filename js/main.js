@@ -16,6 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.getElementById('app_video');
   if (video) {
-    video.playbackRate = 2.0;
+    video.playbackRate = 3.0;
   }
 });

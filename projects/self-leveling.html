@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Leveling Rover</title>
+  <link rel="icon" type="image/x-icon" href="./../assets/images/favicon32.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  
+  <script src="../js/components.js" defer></script>
+</head>
+<body>
+
+  <main class="project-detail">
+    <a href="../index.html#projects" class="back-link">
+      <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/>
+        <path d="m12 19-7-7 7-7"/>
+      </svg>
+      <span>Back to Projects</span>
+    </a>
+
+    <header class="project-header">
+      <h1>Self-Leveling Rover</h1>
+      <p class="subtitle"> 2024 | Concept to Product / Electromechanical Design </p>
+    </header>
+
+    <section class="hero-image-section">
+      <div class="hero-image-window">
+        <img 
+          src="../assets/images/self-leveling-thumb.png" 
+          alt="Project main view" 
+          loading="eager">
+      </div>
+    </section>
+
+    <section class="project-content">
+      <h2>Overview</h2>
+      <p> This project was built to test the feasibility of pre-emptive suspension. 
+        Instead of reacting after a bump, active suspension detects terrain variations ahead of the vehicle and compensates in real time for a much smoother ride. 
+        From initial concept to final assembly, this project was solely my own idea, and while it didn't work perfectly, it was an incredible learning experience.
+      </p> 
+      <p> The concept relied on two front-mounted Sharp IR sensors to identify and map depth changes ahead of the chassis.
+        By pairing that terrain depth profile with vehicle velocity and integrated position data from a 3-axis accelerometer, the system calculated the target height for each wheel.
+        From there, I used Hookean spring equations, classical dynamics, and electromagnetism to calculate the exact current needed for each electromagnet.
+        I also implemented a closed-loop feedback controller used a 3-axis gyroscope to correct pitch errors on the fly.
+        All processing was handled onboard by an Arduino Uno (which perhaps should have been an RPi), with remote driving commands sent over a local network using an ESP32 breakout board. 
+        Power management was a constant challenge; generating a strong enough field required a large onboard battery pack which adds weight, demonstrating that engineering involves weighing tradeoffs.
+        That level of power necessitated a custom board with automotive-grade MOSFETs to control high-current switching to each magnet. 
+        This was my first real dive into KiCad schematic design and PCB layout, serving as the perfect bridge into mechatronics by combining hands-on mechanical, electrical, and software design.
+      </p> 
+
+      <h2>Key Deliverables & Specs</h2>
+      <ul>
+        <li>Accurately map terrain height</li>
+        <li>Use telemetry to obtain vehicle position</li>
+        <li>Generate magnetic fields producing 2 N of force</li>
+        <li>Remotely operate from a distance of up to 30 m</li>
+      </ul>
+
+      <h2>Tools Used</h2>
+      <ul>
+        <li>KiCad (Schematic Capture & PCB Layout)</li>
+        <li>Arduino C++</li>
+        <li>ESP32 (Wi-Fi/Networking)</li>
+        <li>Sensor Fusion (IR & IMU)</li>
+        <li>Onshape (for 3D printing)</li>
+      </ul>
+
+    </section>
+
+    <section class="project-gallery">
+      <h2>Images</h2>
+      <div class="image-grid">
+        <figure class="gallery-item">
+          <img src="../assets/images/self-leveling-board.jpeg" alt="self leveling board">
+          <figcaption>MOSFET protoboard for controlling current to electromagnets.</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="../assets/images/self-leveling-print.jpeg" alt="self leveling wheel print">
+          <figcaption>Custom 3D print for connecting drive motors, electromagnets, and suspension (V1).</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+
+  <dialog id="image_modal" class="lightbox">
+    <button class="lightbox-close" id="lightbox_close" aria-label="Close image preview">&times;</button>
+    <img id="lightbox_img" src="" alt="Enlarged view">
+    <p id="lightbox_caption"></p>
+  </dialog>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('image_modal');
+      const modalImg = document.getElementById('lightbox_img');
+      const modalCaption = document.getElementById('lightbox_caption');
+      const closeBtn = document.getElementById('lightbox_close');
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          const caption = item.querySelector('figcaption');
+
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modalCaption.textContent = caption ? caption.textContent : '';
+          modal.showModal();
+        });
+      });
+
+      closeBtn.addEventListener('click', () => modal.close());
+
+      modal.addEventListener('click', (e) => {
+        const rect = modal.getBoundingClientRect();
+        const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+          rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+        if (!isInDialog || e.target === modal) {
+          modal.close();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
